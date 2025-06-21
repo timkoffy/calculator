@@ -1,48 +1,66 @@
-﻿using System.Reflection.Metadata;
-using System.Windows.Forms;
-
-namespace ConsoleApp1
+﻿namespace ConsoleApp1
 {
     class Program
     {
         static void Main(string[] args)
         {
             string inputText = "";
-            
-            Form root = new Form()
+            string[] operators = {"-", "+", "*", "/"};
+            string[] buttons = {"C", "", "<-", "/", 
+                "1", "2", "3", "*", 
+                "4", "5", "6", "-", 
+                "7", "8", "9", "+", 
+                "", "0", ""};
+
+            Form root = new Form
             {
                 Text = "calculator",
-                Size = new System.Drawing.Size(292, 349)
-            };
-            
-            GroupBox groupBox1 = new GroupBox()
-            {
-                Location = new System.Drawing.Point(3, 3),
-                Size = new System.Drawing.Size(270, 80)
-            };
-            
-            Label entireExpression = new Label()
-            {
-                Text = inputText,
-                TextAlign = System.Drawing.ContentAlignment.TopRight,
-                Location = new System.Drawing.Point(15, 15),
-                Size = new System.Drawing.Size(250, 40)
+                Size = new Size(400, 420),
+                MinimumSize = new Size(400, 420)
             };
 
-            TableLayoutPanel layoutPanel1 = new TableLayoutPanel()
+            TableLayoutPanel mainBox = new TableLayoutPanel
             {
-                Size = new System.Drawing.Size(root.Width, root.Height),
-                
-                
+                Size = new Size(root.Width, root.Height),
+                Dock = DockStyle.Fill,
+                RowCount = 2,
+                ColumnCount = 1
             };
             
-            
-            void addButtonToForm(string buttonText, int x, int y)
+            Label display = new Label
             {
-                Button button = new Button();
-                button.Text = buttonText;
-                button.Location = new System.Drawing.Point(x, y);
-                button.Size = new System.Drawing.Size(65, 40);
+                Text = inputText,
+                Font = new Font("Trebuchet MS", 26),
+                TextAlign = ContentAlignment.TopRight,
+                Dock = DockStyle.Fill,
+                Height = 50
+            };
+
+            TableLayoutPanel buttonPanel = new TableLayoutPanel
+            {
+                Dock = DockStyle.Fill,
+                ColumnCount = 4,
+                RowCount = 5
+            };
+
+            buttonPanel.ColumnStyles.Clear();
+            for (int i = 0; i < 4; i++)
+                buttonPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+
+            buttonPanel.RowStyles.Clear();
+            for (int i = 0; i < 5; i++)
+                buttonPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
+
+
+            void addButtonToForm(string buttonText)
+            {
+                Button button = new Button
+                {
+                    Text = buttonText,
+                    Font = new Font("Trebuchet MS", 16),
+                    Dock = DockStyle.Fill
+                };
+
 
                 // очистить все
                 if (buttonText == "C")
@@ -50,63 +68,72 @@ namespace ConsoleApp1
                     button.Click += (o, s) =>
                     {
                         inputText = "";
-                        entireExpression.Text = inputText;
+                        display.Text = inputText;
                     };
                 }
-                
+
                 // бекспейс
                 if (buttonText == "<-")
                 {
                     button.Click += (o, s) =>
                     {
-                        try {inputText = inputText.Substring(0, inputText.Length - 1);}
-                        catch {}
-                        entireExpression.Text = inputText;
+                        try
+                        {
+                            inputText = inputText.Substring(0, inputText.Length - 1);
+                        }
+                        catch
+                        {
+
+                        }
+
+                        display.Text = inputText;
                     };
                 }
-                
+
                 // фикс повтора знаков
-                string[] signs = { "-", "+", "*", "/"};
-                if (signs.Contains(buttonText))
+
+                if (operators.Contains(buttonText))
                 {
                     button.Click += (o, s) =>
                     {
                         try
                         {
-                            if (signs.Contains(inputText.Substring(inputText.Length - 1)))
+                            if (operators.Contains(inputText.Substring(inputText.Length - 1)))
                             {
                                 inputText += "";
-                                entireExpression.Text = inputText;
+                                display.Text = inputText;
                             }
                             else
                             {
                                 inputText += buttonText;
-                                entireExpression.Text = inputText;
+                                display.Text = inputText;
                             }
                         }
-                        catch {}
+                        catch
+                        {
+                        }
                     };
                 }
-                
+
                 // фикс деления на нуль
                 if (buttonText == "0")
                 {
                     button.Click += (o, s) =>
                     {
-                        
-                        if (inputText.Length>0 && inputText.Substring(inputText.Length - 1) == "/")
+
+                        if (inputText.Length > 0 && inputText.Substring(inputText.Length - 1) == "/")
                         {
                             inputText += "";
-                            entireExpression.Text = inputText;
+                            display.Text = inputText;
                         }
                         else
                         {
                             inputText += buttonText;
-                            entireExpression.Text = inputText;
+                            display.Text = inputText;
                         }
                     };
                 }
-                
+
                 // проверка на число
                 string[] ints = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
                 if (ints.Contains(buttonText))
@@ -114,54 +141,32 @@ namespace ConsoleApp1
                     button.Click += (o, s) =>
                     {
                         inputText += buttonText;
-                        entireExpression.Text = inputText;
+                        display.Text = inputText;
                     };
                 }
-                
-                layoutPanel1.Controls.Add(button);
+
+                buttonPanel.Controls.Add(button);
             }
 
-            void addResultButton(int x, int y)
+            void addResultButton()
             {
-                Button button = new Button();
-                button.Text = "=";
-                button.Location = new System.Drawing.Point(x, y);
-                button.Size = new System.Drawing.Size(65, 40);
-                
-                layoutPanel1.Controls.Add(button);
-            }
-            
-            
-            
-            // addButtonToForm("C", 3, 86);
-            // addButtonToForm("", 3+68, 86);
-            // addButtonToForm("<-", 3+68+68, 86);
-            // addButtonToForm("/", 3+68+68+68, 86);
-            //
-            // addButtonToForm("1", 3, 86+45);
-            // addButtonToForm("2", 3+68, 86+45);
-            // addButtonToForm("3", 3+68+68, 86+45);
-            // addButtonToForm("*", 3+68+68+68, 86+45);
-            //
-            // addButtonToForm("4", 3, 86+45+45);
-            // addButtonToForm("5", 3+68, 86+45+45);
-            // addButtonToForm("6", 3+68+68, 86+45+45);
-            // addButtonToForm("-", 3+68+68+68, 86+45+45);
-            //  
-            // addButtonToForm("7", 3, 86+45+45+45);
-            // addButtonToForm("8", 3+68, 86+45+45+45);
-            // addButtonToForm("9", 3+68+68, 86+45+45+45);
-            // addButtonToForm("+", 3+68+68+68, 86+45+45+45);
-            //
-            // addButtonToForm("", 3, 86+45+45+45+45);
-            // addButtonToForm("0", 3+68, 86+45+45+45+45);
-            // addButtonToForm("", 3+68+68, 86+45+45+45+45);
-            // addResultButton(3+68+68+68, 86+45+45+45+45);
+                Button button = new Button()
+                {
+                    Text = "=",
+                    Dock = DockStyle.Fill
+                };
 
+                buttonPanel.Controls.Add(button);
+            }
+
+            foreach (string i in buttons)
+                addButtonToForm(i);
+                
+            addResultButton();
             
-            groupBox1.Controls.Add(entireExpression);
-            root.Controls.Add(groupBox1);
-            root.Controls.Add(layoutPanel1);
+            mainBox.Controls.Add(display,0,0);
+            mainBox.Controls.Add(buttonPanel,0,1);
+            root.Controls.Add(mainBox);
             root.ShowDialog();
         }
     }
