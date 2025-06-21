@@ -118,7 +118,7 @@ namespace ConsoleApp1
                     };
                 }
                 
-                root.Controls.Add(button);
+                layoutPanel1.Controls.Add(button);
             }
 
             void addResultButton(int x, int y)
@@ -128,7 +128,7 @@ namespace ConsoleApp1
                 button.Location = new System.Drawing.Point(x, y);
                 button.Size = new System.Drawing.Size(65, 40);
                 
-                root.Controls.Add(button);
+                layoutPanel1.Controls.Add(button);
             }
             
             
