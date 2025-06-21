@@ -111,6 +111,7 @@
                         }
                         catch
                         {
+                            
                         }
                     };
                 }
@@ -144,7 +145,7 @@
                         display.Text = inputText;
                     };
                 }
-
+                
                 buttonPanel.Controls.Add(button);
             }
 
@@ -155,13 +156,13 @@
                     Text = "=",
                     Dock = DockStyle.Fill
                 };
-
+                
                 buttonPanel.Controls.Add(button);
             }
 
             foreach (string i in buttons)
                 addButtonToForm(i);
-                
+            
             addResultButton();
             
             mainBox.Controls.Add(display,0,0);
