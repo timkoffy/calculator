@@ -1,6 +1,4 @@
-﻿
-
-namespace ConsoleApp1
+﻿namespace ConsoleApp1
 {
     class Program
     {
@@ -93,6 +91,7 @@ namespace ConsoleApp1
                 }
 
                 // фикс повтора знаков
+
                 if (operators.Contains(buttonText))
                 {
                     button.Click += (o, s) =>
@@ -156,17 +155,8 @@ namespace ConsoleApp1
                     Text = "=",
                     Dock = DockStyle.Fill
                 };
-                button.Click += (o, s) =>
-                {
-                    inputToResult(inputText);
-                };
 
                 buttonPanel.Controls.Add(button);
-            }
-
-            void inputToResult(string expression)
-            {
-
             }
 
             foreach (string i in buttons)
