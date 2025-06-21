@@ -166,24 +166,7 @@ namespace ConsoleApp1
 
             void inputToResult(string expression)
             {
-                // string[] pluses = expression.Split("+");
-                // foreach (string subPluses in pluses)
-                //     if (subPluses.Contains("-"))
-                //     {
-                //         string[] minuses = subPluses.Split("-");
-                //         foreach (string subMinus in minuses)
-                //             if (subMinus.Contains("*"))
-                //             {
-                //                 string[] multis = subMinus.Split("*");
-                //                 int curMult = Convert.ToInt32(multis[0]);
-                //                 while (multis.Length >1)
-                //                 {
-                //                     curMult *= Convert.ToInt32(multis[1]);
-                //                 }
-                //
-                //                 int indexMult = minuses.Index(subMinus)
-                //             }
-                //     }
+
             }
 
             foreach (string i in buttons)
