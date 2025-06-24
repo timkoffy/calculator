@@ -4,12 +4,12 @@ class Program
     static void Main()
     {
         string inputText = "";
-        string[] operators = {"-", "+", "*", "/"};
+        string[] operators = {"-", "+", "*", "/", "."};
         string[] buttons = {"C", "", "<-", "/", 
-            "1", "2", "3", "*", 
-            "4", "5", "6", "-", 
-            "7", "8", "9", "+", 
-            "", "0", ""};
+                            "1", "2", "3", "*", 
+                            "4", "5", "6", "-", 
+                            "7", "8", "9", "+", 
+                            "", "0", ".", "="};
         string[] ints = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
 
         Form root = new Form
@@ -50,7 +50,6 @@ class Program
         buttonPanel.RowStyles.Clear();
         for (int i = 0; i < 5; i++)
             buttonPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
-
 
         void addButtonToForm(string buttonText)
         {
@@ -99,6 +98,14 @@ class Program
                         }
                     };
                     break;
+                
+                case "=":
+                    button.Click += (o, s) =>
+                    {
+                        inputText = ResultCalculating.Peni(inputText);
+                        display.Text = inputText;
+                    };
+                    break;
             
                 default:
                     if (operators.Contains(buttonText))
@@ -134,27 +141,8 @@ class Program
             buttonPanel.Controls.Add(button);
         }
 
-        void addResultButton()
-        {
-            Button button = new Button()
-            {
-                Text = "=",
-                Dock = DockStyle.Fill
-            };
-            
-            button.Click += (o, s) =>
-            {
-                inputText = ResultCalculating.Peni(inputText);
-                display.Text = inputText;
-            };
-
-            buttonPanel.Controls.Add(button);
-        }
-
         foreach (string i in buttons)
             addButtonToForm(i);
-            
-        addResultButton();
         
         mainBox.Controls.Add(display,0,0);
         mainBox.Controls.Add(buttonPanel,0,1);

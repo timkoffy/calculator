@@ -21,7 +21,6 @@
                                 productes[l] = Division(productes[l]);
                             }
                         }
-
                         if (productes.Length > 1)
                         {
                             for (int p = 1; p < productes.Length; p++)
@@ -29,30 +28,25 @@
                                 productes[p] = Convert.ToString(Convert.ToDouble(productes[p - 1]) *
                                                                 Convert.ToDouble(productes[p]));
                             }
-
                             minuses[j] = productes[productes.Length - 1];
                         }
                         else
                         {
                             minuses[j] = productes[0];
                         }
-                        // Console.WriteLine(minuses[j]);
                     }
                     else if (minuses[j].Contains("/"))
                     {
                         minuses[j] = Division(minuses[j]);
                     }
-                    // Console.WriteLine(minuses[j]);
                 }
-
-
+                
                 if (minuses.Length > 1)
                 {
                     for (int p = 1; p < minuses.Length; p++)
                     {
                         minuses[p] = Convert.ToString(Convert.ToDouble(minuses[p - 1]) - Convert.ToDouble(minuses[p]));
                     }
-
                     pluses[i] = minuses[minuses.Length - 1];
                 }
                 else
@@ -60,8 +54,6 @@
                     pluses[i] = minuses[0];
                 }
             }
-
-
             else
             {
                 if (pluses[i].Contains("*"))
@@ -74,7 +66,6 @@
                             productes[l] = Division(productes[l]);
                         }
                     }
-
                     if (productes.Length > 1)
                     {
                         for (int p = 1; p < productes.Length; p++)
@@ -82,14 +73,12 @@
                             productes[p] =
                                 Convert.ToString(Convert.ToDouble(productes[p - 1]) * Convert.ToDouble(productes[p]));
                         }
-
                         pluses[i] = productes[productes.Length - 1];
                     }
                     else
                     {
                         pluses[i] = productes[0];
                     }
-
                 }
                 else if (pluses[i].Contains("/"))
                 {
@@ -97,7 +86,6 @@
                 }
             }
         }
-
         if (pluses.Length > 1)
         {
             for (int p = 1; p < pluses.Length; p++)
