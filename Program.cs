@@ -1,7 +1,7 @@
 ﻿namespace ConsoleApp1;
 class Program
 {
-    static void Main1()
+    static void Main()
     {
         string inputText = "";
         string[] operators = {"-", "+", "*", "/"};
@@ -144,8 +144,8 @@ class Program
             
             button.Click += (o, s) =>
             {
-                string answer = ResultCalculating.Peni(inputText);
-                display.Text = answer;
+                inputText = ResultCalculating.Peni(inputText);
+                display.Text = inputText;
             };
 
             buttonPanel.Controls.Add(button);

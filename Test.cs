@@ -4,10 +4,11 @@ namespace ConsoleApp1;
 
 class Test
 {
-    static void Main()
+    static void Main1()
     {
         string expression = "128-12+5/10*20-3/2";
         expression = "2/4-4+11/10-24/2*3/6*4-2";
+        string result = "";
         string[] pluses = expression.Split("+");
         for (int i = 0; i < pluses.Length; i++)
         {
@@ -26,12 +27,15 @@ class Test
                                 productes[l] = Division(productes[l]);
                             }
                         }
+
                         if (productes.Length > 1)
                         {
                             for (int p = 1; p < productes.Length; p++)
                             {
-                                productes[p] = Convert.ToString(Convert.ToDouble(productes[p-1]) * Convert.ToDouble(productes[p]));
+                                productes[p] = Convert.ToString(Convert.ToDouble(productes[p - 1]) *
+                                                                Convert.ToDouble(productes[p]));
                             }
+
                             minuses[j] = productes[productes.Length - 1];
                         }
                         else
@@ -46,24 +50,24 @@ class Test
                     }
                     // Console.WriteLine(minuses[j]);
                 }
-                
-                
+
+
                 if (minuses.Length > 1)
                 {
                     for (int p = 1; p < minuses.Length; p++)
                     {
-                        minuses[p] = Convert.ToString(Convert.ToDouble(minuses[p-1]) - Convert.ToDouble(minuses[p]));
+                        minuses[p] = Convert.ToString(Convert.ToDouble(minuses[p - 1]) - Convert.ToDouble(minuses[p]));
                     }
+
                     pluses[i] = minuses[minuses.Length - 1];
                 }
                 else
                 {
                     pluses[i] = minuses[0];
                 }
-                Console.WriteLine(pluses[i]);
             }
-            
-            
+
+
             else
             {
                 if (pluses[i].Contains("*"))
@@ -76,12 +80,15 @@ class Test
                             productes[l] = Division(productes[l]);
                         }
                     }
+
                     if (productes.Length > 1)
                     {
                         for (int p = 1; p < productes.Length; p++)
                         {
-                            productes[p] = Convert.ToString(Convert.ToDouble(productes[p-1]) * Convert.ToDouble(productes[p]));
+                            productes[p] =
+                                Convert.ToString(Convert.ToDouble(productes[p - 1]) * Convert.ToDouble(productes[p]));
                         }
+
                         pluses[i] = productes[productes.Length - 1];
                     }
                     else
@@ -95,20 +102,22 @@ class Test
                     pluses[i] = Division(pluses[i]);
                 }
             }
-            
-            if (pluses.Length > 1)
-            {
-                for (int p = 1; p < pluses.Length; p++)
-                {
-                    pluses[p] = Convert.ToString(Convert.ToDouble(pluses[p-1]) + Convert.ToDouble(pluses[p]));
-                }
-                pluses[i] = pluses[pluses.Length - 1];
-            }
-            else
-            {
-                pluses[i] = pluses[0];
-            }
         }
+
+        if (pluses.Length > 1)
+        {
+            for (int p = 1; p < pluses.Length; p++)
+            {
+                pluses[p] = Convert.ToString(Convert.ToDouble(pluses[p-1]) + Convert.ToDouble(pluses[p]));
+            }
+            result = pluses[pluses.Length - 1];
+        }
+        else
+        {
+            result = pluses[0];
+        }
+        
+        Console.Write(result);
     }
 
     static string Division(string expression)
