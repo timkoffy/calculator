@@ -7,7 +7,7 @@ class Test
     static void Main()
     {
         string expression = "128-12+5/10*20-3/2";
-        expression = "2-4+11/10-24/2*3/6*4-2";
+        expression = "2/4-4+11/10-24/2*3/6*4-2";
         string[] pluses = expression.Split("+");
         for (int i = 0; i < pluses.Length; i++)
         {
@@ -38,19 +38,32 @@ class Test
                         {
                             minuses[j] = productes[0];
                         }
-                        Console.WriteLine(minuses[j]);
+                        // Console.WriteLine(minuses[j]);
                     }
-                    
-                    else
+                    else if (minuses[j].Contains("/"))
                     {
-                        if (minuses[j].Contains("/"))
-                        {
-                            minuses[j] = Division(minuses[j]);
-                        }
-                        Console.WriteLine(minuses[j]);
+                        minuses[j] = Division(minuses[j]);
                     }
+                    // Console.WriteLine(minuses[j]);
                 }
+                
+                
+                if (minuses.Length > 1)
+                {
+                    for (int p = 1; p < minuses.Length; p++)
+                    {
+                        minuses[p] = Convert.ToString(Convert.ToDouble(minuses[p-1]) - Convert.ToDouble(minuses[p]));
+                    }
+                    pluses[i] = minuses[minuses.Length - 1];
+                }
+                else
+                {
+                    pluses[i] = minuses[0];
+                }
+                Console.WriteLine(pluses[i]);
             }
+            
+            
             else
             {
                 if (pluses[i].Contains("*"))
@@ -75,17 +88,25 @@ class Test
                     {
                         pluses[i] = productes[0];
                     }
-                    Console.WriteLine(pluses[i]);
+
                 }
-                    
-                else
+                else if (pluses[i].Contains("/"))
                 {
-                    if (pluses[i].Contains("/"))
-                    {
-                        pluses[i] = Division(pluses[i]);
-                    }
-                    Console.WriteLine(pluses[i]);
-                }    
+                    pluses[i] = Division(pluses[i]);
+                }
+            }
+            
+            if (pluses.Length > 1)
+            {
+                for (int p = 1; p < pluses.Length; p++)
+                {
+                    pluses[p] = Convert.ToString(Convert.ToDouble(pluses[p-1]) + Convert.ToDouble(pluses[p]));
+                }
+                pluses[i] = pluses[pluses.Length - 1];
+            }
+            else
+            {
+                pluses[i] = pluses[0];
             }
         }
     }
