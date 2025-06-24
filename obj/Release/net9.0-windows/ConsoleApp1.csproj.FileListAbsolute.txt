@@ -1,0 +1,15 @@
+C:\Users\nikit\RiderProjects\ConsoleApp1\ConsoleApp1\bin\Release\net9.0-windows\ConsoleApp1.exe
+C:\Users\nikit\RiderProjects\ConsoleApp1\ConsoleApp1\bin\Release\net9.0-windows\ConsoleApp1.deps.json
+C:\Users\nikit\RiderProjects\ConsoleApp1\ConsoleApp1\bin\Release\net9.0-windows\ConsoleApp1.runtimeconfig.json
+C:\Users\nikit\RiderProjects\ConsoleApp1\ConsoleApp1\bin\Release\net9.0-windows\ConsoleApp1.dll
+C:\Users\nikit\RiderProjects\ConsoleApp1\ConsoleApp1\bin\Release\net9.0-windows\ConsoleApp1.pdb
+C:\Users\nikit\RiderProjects\ConsoleApp1\ConsoleApp1\obj\Release\net9.0-windows\ConsoleApp1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\nikit\RiderProjects\ConsoleApp1\ConsoleApp1\obj\Release\net9.0-windows\ConsoleApp1.AssemblyInfoInputs.cache
+C:\Users\nikit\RiderProjects\ConsoleApp1\ConsoleApp1\obj\Release\net9.0-windows\ConsoleApp1.AssemblyInfo.cs
+C:\Users\nikit\RiderProjects\ConsoleApp1\ConsoleApp1\obj\Release\net9.0-windows\ConsoleApp1.csproj.CoreCompileInputs.cache
+C:\Users\nikit\RiderProjects\ConsoleApp1\ConsoleApp1\obj\Release\net9.0-windows\ConsoleApp1.sourcelink.json
+C:\Users\nikit\RiderProjects\ConsoleApp1\ConsoleApp1\obj\Release\net9.0-windows\ConsoleApp1.dll
+C:\Users\nikit\RiderProjects\ConsoleApp1\ConsoleApp1\obj\Release\net9.0-windows\refint\ConsoleApp1.dll
+C:\Users\nikit\RiderProjects\ConsoleApp1\ConsoleApp1\obj\Release\net9.0-windows\ConsoleApp1.pdb
+C:\Users\nikit\RiderProjects\ConsoleApp1\ConsoleApp1\obj\Release\net9.0-windows\ConsoleApp1.genruntimeconfig.cache
+C:\Users\nikit\RiderProjects\ConsoleApp1\ConsoleApp1\obj\Release\net9.0-windows\ref\ConsoleApp1.dll
